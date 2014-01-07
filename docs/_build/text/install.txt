@@ -1,0 +1,7 @@
+
+Installation
+************
+
+We recommend using pip to install the SDK:
+
+   pip install facebook-sdk

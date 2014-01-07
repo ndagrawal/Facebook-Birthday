@@ -1,0 +1,17 @@
+
+Welcome to Facebook SDK for Python's documentation!
+***************************************************
+
+Contents:
+
+* Introduction
+* Installation
+
+Indices and tables
+******************
+
+* *Index*
+
+* *Module Index*
+
+* *Search Page*
