@@ -1,13 +1,17 @@
 #!/bin/python
 import facebook
-import json
 
 oauth_access_token = "CAACEdEose0cBAJRZB6TZCcMH0zk9yKqElp4RDHZCJltSuR0BDylZCFKQksX77FgOXtFuVd064dw39KktOssrWvFUuzGunZCZBzyFNX8RgvNI6G8TNXUnxfPfeZCepZAZAuuqlz1pRCi2GlR0OmYQFwZBqCu4BlzfwwuxNzJZCtyTepVNW5ZC380EUCRRasnZBXXiM4a8ZD"
 graph = facebook.GraphAPI(oauth_access_token)
 profile = graph.get_object("me")
-feed_json = graph.get_object("me/feed")
-data = feed_json["data"]
-print data
+feed = graph.get_object("me/feed")
+data = feed["data"]
+
+for x in data:
+  print x["updated_time"] ,"=>", x["from"]["name"] , "=>", x["message"],"=>", x["id"]
+
+
+
 
 #for x in data:
 #  print x["id"]
