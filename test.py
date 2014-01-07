@@ -1,27 +1,32 @@
 #!/bin/python
 import facebook
-
-oauth_access_token = "CAACEdEose0cBAJRZB6TZCcMH0zk9yKqElp4RDHZCJltSuR0BDylZCFKQksX77FgOXtFuVd064dw39KktOssrWvFUuzGunZCZBzyFNX8RgvNI6G8TNXUnxfPfeZCepZAZAuuqlz1pRCi2GlR0OmYQFwZBqCu4BlzfwwuxNzJZCtyTepVNW5ZC380EUCRRasnZBXXiM4a8ZD"
+oauth_access_token = PUT YOUR TOKEN HERE 
 graph = facebook.GraphAPI(oauth_access_token)
 profile = graph.get_object("me")
-feed = graph.get_object("me/feed")
+total_posts = 143
+feed = graph.get_object("me/feed",limit=total_posts)
 data = feed["data"]
 
+Thanks = ["Thanks a lot :)","Thanks a ton!!","Thanks for the wishes!!"]
+print "="*50
+i = 0 
 for x in data:
-  print x["updated_time"] ,"=>", x["from"]["name"] , "=>", x["message"],"=>", x["id"]
+  i = i + 1
+  message = x["message"]
+#  sender= (x["from"]["name"])
+#  try:
+#    sender = unicode(sender, "utf-8")
+#  except TypeError:
+#    sender = unicode(sender, "ascii")
+#  else:
+#    # value was valid ASCII data
+#    pass
 
 
-
-
-#for x in data:
-#  print x["id"]
-#print profile["username"]
-#feed = json.loads(feed_json)
-#json_string = json.dumps(feed,sort_keys=True,indent=2)
-#print json_string
-#print "="*50
-#print feed_json
-#for x in feed:
-#  print x 
-#print feed;
+#  value = unicode(sender, "utf-8")
+#  print sender
+  print x["updated_time"] ,"=>",  "=>", message ,"=>", x["id"] ,"=>" ,Thanks[i%3]
+ # Like the post and write comments
+  graph.put_like(x["id"])  
+  graph.put_comment(x["id"],Thanks[i%3])  
 print "="*50 
